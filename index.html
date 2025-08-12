@@ -150,14 +150,51 @@
             Be the first to experience Synapse Academy. Sign up now to secure your spot and start learning and earning.
         </p>
         <form id="waitlist-form" class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
-            <input type="email" placeholder="Enter your email" id="email-input" class="input-focus flex-grow bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none" required>
-            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition">
+            <input 
+                type="email" 
+                placeholder="Enter your email" 
+                id="email-input" 
+                class="input-focus flex-grow bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none" 
+                required
+            >
+            <button 
+                type="submit" 
+                class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition"
+            >
                 Sign Up
             </button>
         </form>
         <p id="form-message" class="mt-4 text-sm text-gray-400"></p>
     </div>
 </section>
+
+<script>
+      document.getElementById("waitlist").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById("email").value;
+
+        try {
+          const res = await fetch("https://synapse-backend.onrender.com/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+          });
+
+          if (!res.ok) {
+            const errorData = await res.json();
+            alert(errorData.error || "Subscription failed");
+            return;
+          }
+
+          const data = await res.json();
+          alert(data.message);
+        } catch (err) {
+          console.error("Fetch error:", err);
+          alert("Network error, please try again later.");
+        }
+      });
+</script>
 
     <!-- Footer -->
     <footer class="bg-gray-900 py-12">
@@ -185,62 +222,5 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
-            document.querySelector('.mobile-menu').classList.toggle('hidden');
-        });
-
-        // Countdown timer
-        function updateCountdown() {
-            const now = new Date();
-            const launchDate = new Date('May 4, 2026 00:00:00');
-            const diff = launchDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('countdown').innerHTML = `
-                <div>${days}</div><div>:</div><div>${hours}</div><div>:</div><div>${minutes}</div><div>:</div><div>${seconds}</div>
-            `;
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                document.querySelector('.mobile-menu').classList.add('hidden');
-            });
-        });
-        // Waitlist form submission
-document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('email-input');
-    const messageElement = document.getElementById('form-message');
-    const email = emailInput.value.trim();
-
-    try {
-        const response = await fetch('http://localhost:3000/api/waitlist', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email })
-        });
-
-        const data = await response.json();
-        messageElement.textContent = data.message || data.error;
-        messageElement.className = `mt-4 text-sm ${response.ok ? 'text-green-400' : 'text-red-400'}`;
-
-        if (response.ok) {
-            emailInput.value = ''; // Clear input on success
-        }
-    } catch (err) {
-        messageElement.textContent = 'An unexpected error occurred.';
-        messageElement.className = 'mt-4 text-sm text-red-400';
-    }
-});
-    </script>
 </body>
 </html>
