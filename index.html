@@ -153,7 +153,7 @@
             <input 
                 type="email" 
                 placeholder="Enter your email" 
-                id="email" 
+                id="email-input" 
                 class="input-focus flex-grow bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none" 
                 required
             >
@@ -169,33 +169,32 @@
 </section>
 
 <script>
-      document.getElementById("waitlist").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        
-        const email = document.getElementById("email").value;
+      document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById("email-input").value;
 
-        try {
-          const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-          });
+        try {
+          const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+          });
 
-          if (!res.ok) {
-            const errorData = await res.json();
-            alert(errorData.error || "Subscription failed");
-            return;
-          }
+          if (!res.ok) {
+            const errorData = await res.json();
+            alert(errorData.error || "Subscription failed");
+            return;
+          }
 
-          const data = await res.json();
-          alert(data.message);
-        } catch (err) {
-          console.error("Fetch error:", err);
-          alert("Network error, please try again later.");
-        }
-      });
+          const data = await res.json();
+          alert(data.message);
+        } catch (err) {
+          console.error("Fetch error:", err);
+          alert("Network error, please try again later.");
+        }
+      });
 </script>
-
     <!-- Footer -->
     <footer class="bg-gray-900 py-12">
         <div class="container mx-auto px-4">
