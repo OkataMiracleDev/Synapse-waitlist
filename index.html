@@ -169,33 +169,48 @@
 </section>
 
 <script>
-      document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        
-        const email = document.getElementById("email-input").value;
+    document.addEventListener('DOMContentLoaded', () => {
+        const waitlistForm = document.getElementById("waitlist-form");
 
-        try {
-          const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-          });
+        if (waitlistForm) {
+            waitlistForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-          if (!res.ok) {
-            const errorData = await res.json();
-            alert(errorData.error || "Subscription failed");
-            return;
-          }
+                const emailInput = document.getElementById("email-input");
+                
+                // Check if the element exists before trying to access its properties
+                if (!emailInput) {
+                    console.error("Error: email-input element not found.");
+                    return;
+                }
 
-          const data = await res.json();
-          alert(data.message);
-        } catch (err) {
-          console.error("Fetch error:", err);
-          alert("Network error, please try again later.");
-        }
-      });
-</script>
-    <!-- Footer -->
+                const email = emailInput.value;
+
+                try {
+                    const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email })
+                    });
+
+                    if (!res.ok) {
+                        const errorData = await res.json();
+                        alert(errorData.error || "Subscription failed");
+                        return;
+                    }
+
+                    const data = await res.json();
+                    alert(data.message);
+                } catch (err) {
+                    console.error("Fetch error:", err);
+                    alert("Network error, please try again later.");
+                }
+            });
+        } else {
+            console.error("Error: waitlist-form element not found.");
+        }
+    });
+</script>    <!-- Footer -->
     <footer class="bg-gray-900 py-12">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
