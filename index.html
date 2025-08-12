@@ -175,7 +175,7 @@
         const email = document.getElementById("email").value;
 
         try {
-          const res = await fetch("https://synapse-backend.onrender.com/subscribe", {
+          const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email })
