@@ -173,7 +173,7 @@
         const email = document.getElementById("email").value;
 
         try {
-          const res = await fetch("https://synapse-waitlist-backend.onrender.com/waitlist", {
+          const res = await fetch("https://synapse-waitlist.netlify.app//waitlist", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email })
