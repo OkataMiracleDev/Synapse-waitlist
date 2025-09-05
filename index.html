@@ -166,34 +166,35 @@
     </div>
 </section>
 
-    <script>
-      document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
+        <script>
+            document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById("email").value;
+
+                try {
+                // CORRECTED: Use a relative path to leverage the Netlify redirect
+                const res = await fetch("/waitlist", { 
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                });
+
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    alert(errorData.error || "Subscription failed");
+                    return;
+                }
+
+                const data = await res.json();
+                alert(data.message);
+                } catch (err) {
+                console.error("Fetch error:", err);
+                alert("Network error, please try again later.");
+                }
+            });
+        </script>  
         
-        const email = document.getElementById("email").value;
-
-        try {
-          const res = await fetch("https://synapse-waitlist.netlify.app//waitlist", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-          });
-
-          if (!res.ok) {
-            const errorData = await res.json();
-            alert(errorData.error || "Subscription failed");
-            return;
-          }
-
-          const data = await res.json();
-          alert(data.message);
-        } catch (err) {
-          console.error("Fetch error:", err);
-          alert("Network error, please try again later.");
-        }
-      });
-    </script>
-  
 <!-- Footer -->
     <footer class="bg-gray-900 py-12">
         <div class="container mx-auto px-4">
