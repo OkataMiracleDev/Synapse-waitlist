@@ -16,5 +16,5 @@
   # This redirect rule sends all requests from the root path
   # to our waitlist function.
   from = "/waitlist"
-  to = "/.netlify/functions/waitlist"
+  to = "/.netlify/functions/server" # <-- CORRECTED
   status = 200
