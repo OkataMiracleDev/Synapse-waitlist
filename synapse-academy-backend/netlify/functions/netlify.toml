@@ -1,20 +1,10 @@
 [build]
-  # Command to run before building your site.
-  # This is usually where you'd install dependencies.
   command = "npm install"
 
-  # The directory to publish after the build completes.
-  # For a serverless function, this is typically where your function files are.
-  # In this case, we'll configure Netlify to treat this directory as the source for our functions.
-  # No publish directory is needed for a backend function.
-
 [functions]
-  # The directory where your serverless functions are located.
   directory = "netlify/functions"
-  
+
 [[redirects]]
-  # This redirect rule sends all requests from the root path
-  # to our waitlist function.
   from = "/waitlist"
-  to = "/.netlify/functions/server" # <-- CORRECTED
-  status = 200
+  to = "/.netlify/functions/server"
+  status = 301

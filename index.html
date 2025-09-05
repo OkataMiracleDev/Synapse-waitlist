@@ -166,34 +166,34 @@
     </div>
 </section>
 
-        <script>
-            document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-                e.preventDefault();
-                
-                const email = document.getElementById("email").value;
+<script>
+  document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-                try {
-                // CORRECTED: Use a relative path to leverage the Netlify redirect
-                const res = await fetch("/waitlist", { 
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
-                });
+    const email = document.getElementById("email").value;
 
-                if (!res.ok) {
-                    const errorData = await res.json();
-                    alert(errorData.error || "Subscription failed");
-                    return;
-                }
+    try {
+      // Call the Netlify function directly
+      const res = await fetch("/.netlify/functions/server", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-                const data = await res.json();
-                alert(data.message);
-                } catch (err) {
-                console.error("Fetch error:", err);
-                alert("Network error, please try again later.");
-                }
-            });
-        </script>  
+      if (!res.ok) {
+        const errorData = await res.json();
+        alert(errorData.error || "Subscription failed");
+        return;
+      }
+
+      const data = await res.json();
+      alert(data.message);
+    } catch (err) {
+      console.error("Fetch error:", err);
+      alert("Network error, please try again later.");
+    }
+  });
+</script>
         
 <!-- Footer -->
     <footer class="bg-gray-900 py-12">
