@@ -166,34 +166,45 @@
     </div>
 </section>
 
-<script>
-  document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+  <script>
+    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const messageEl = document.getElementById("form-message");
+      messageEl.textContent = "Submitting...";
 
-    const email = document.getElementById("email").value;
+      try {
+        const res = await fetch("/.netlify/functions/server", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
 
-    try {
-      // Call the Netlify function directly
-      const res = await fetch("/.netlify/functions/server", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+        let data;
+        try {
+          data = await res.json();
+        } catch {
+          throw new Error("Invalid server response");
+        }
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        alert(errorData.error || "Subscription failed");
-        return;
+        if (!res.ok) {
+          messageEl.textContent = data.error || "Subscription failed.";
+          messageEl.classList.remove("text-gray-400");
+          messageEl.classList.add("text-red-400");
+          return;
+        }
+
+        messageEl.textContent = data.message;
+        messageEl.classList.remove("text-red-400");
+        messageEl.classList.add("text-green-400");
+      } catch (err) {
+        console.error("Fetch error:", err);
+        messageEl.textContent = "Network error, please try again later.";
+        messageEl.classList.remove("text-gray-400");
+        messageEl.classList.add("text-red-400");
       }
-
-      const data = await res.json();
-      alert(data.message);
-    } catch (err) {
-      console.error("Fetch error:", err);
-      alert("Network error, please try again later.");
-    }
-  });
-</script>
+    });
+  </script>
         
 <!-- Footer -->
     <footer class="bg-gray-900 py-12">
