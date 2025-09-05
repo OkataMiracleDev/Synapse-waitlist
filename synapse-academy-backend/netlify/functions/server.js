@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const app = express();
 
-const allowedOrigins = ['https://synapse-waitlist.vercel.app/'];
+const allowedOrigins = ['https://synapse-waitlist.netlify.app'];
 
 // Apply CORS middleware to the entire app with a custom origin function
 app.use(cors({
