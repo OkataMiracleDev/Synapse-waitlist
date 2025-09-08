@@ -66,13 +66,23 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden bg-white shadow-lg">
+        <div class="mobile-menu hidden md:hidden w-62 absolute top-18 right-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl px-2 py-4 shadow-2xl">
             <div class="flex flex-col space-y-3 p-4">
-                <a href="#features" class="text-gray-800 hover:text-purple-600 transition">Features</a>
-                <a href="#waitlist" class="text-gray-800 hover:text-purple-600 transition">Join Waitlist</a>
+                <a href="#features" class="text-white font-bold hover:text-gray-200 transition">Features</a>
+                <a href="#waitlist" class="text-white font-bold hover:text-gray-200 transition">Join Waitlist</a>
             </div>
         </div>
     </nav>
+    <script>
+    // Get the button and the mobile menu
+    const btn = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    // Add event listener to toggle menu
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+    </script>
 
     <!-- Hero Section -->
     <section class="gradient-bg py-16 md:py-24">
@@ -94,7 +104,7 @@
                     <a href="#waitlist" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition">
                         Join Waitlist
                     </a>
-                    <a target="_blank" href="https://x.com/SynapseOnChain" class="bg-black border-2 border-white hover:bg-white hover:text-purple-700 text-white font-bold flex flex-row justify-center items-center py-3 px-6 rounded-lg transition">
+                    <a target="_blank" href="https://x.com/SynapseOnChain" class="bg-black border-2 border-white hover:bg-white hover:text-purple-700 text-white font-bold flex flex-row justify-center items-center z-50 py-3 px-6 rounded-lg transition">
                         <i class="fa-brands fa-x-twitter text-gray-500 text-xl mr-2"></i>
                         <p>Follow SynapseOnChain</p> 
                     </a>
