@@ -239,48 +239,46 @@
     </div>
   </section>
 
-  <script>
-    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const messageEl = document.getElementById("form-message");
-      messageEl.textContent = "Submitting...";
-      messageEl.classList.remove("text-red-400", "text-green-400");
-      messageEl.classList.add("text-gray-400");
+    <script>
+      document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const messageEl = document.getElementById("form-message");
+        messageEl.textContent = "Submitting...";
+        messageEl.classList.remove("text-red-400", "text-green-400");
+        messageEl.classList.add("text-gray-400");
 
-      try {
-        const res = await fetch("/.netlify/functions/server", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        });
+        try {
+          const res = await fetch("/.netlify/functions/server", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
 
-        let data = {};
-        const contentType = res.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          data = await res.json();
-        }
+          if (!res.ok) {
+            let data = {};
+            const contentType = res.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              data = await res.json();
+            }
+            messageEl.textContent = data.error || "Subscription failed.";
+            messageEl.classList.remove("text-gray-400");
+            messageEl.classList.add("text-red-400");
+            return;
+          }
 
-        if (!res.ok) {
-          messageEl.textContent = data.error || "Subscription failed.";
+          // 🚀 Redirect to the success page instead of showing the message
+          window.location.href = "thank-you.html";
+
+        } catch (err) {
+          console.error("Fetch error:", err);
+          messageEl.textContent = "Network error, please try again later.";
           messageEl.classList.remove("text-gray-400");
           messageEl.classList.add("text-red-400");
-          return;
         }
-
-        messageEl.textContent = data.message || "Subscription successful!";
-        messageEl.classList.remove("text-gray-400", "text-red-400");
-        messageEl.classList.add("text-green-400");
-        document.getElementById("waitlist-form").reset();
-      } catch (err) {
-        console.error("Fetch error:", err);
-        messageEl.textContent = "Network error, please try again later.";
-        messageEl.classList.remove("text-gray-400");
-        messageEl.classList.add("text-red-400");
-      }
-    });
-  </script>
-
+      });
+    </script>
+    
   <!-- Footer -->
   <footer class="bg-gray-900 py-12">
     <div class="container mx-auto px-4">
