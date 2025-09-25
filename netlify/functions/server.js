@@ -7,7 +7,11 @@ const serverless = require("serverless-http");
 const app = express();
 const router = express.Router();
 
-const allowedOrigins = ["https://synapse-waitlist.netlify.app"];
+// ✅ Added https://synapseonchain.xyz/ to the allowed origins
+const allowedOrigins = [
+  "https://synapse-waitlist.netlify.app",
+  "https://synapseonchain.xyz/"
+];
 
 // Apply CORS middleware
 app.use(
