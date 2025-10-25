@@ -54,6 +54,6 @@ router.post("/", async (req, res) => {
   res.json({ message: "Subscription successful!" });
 });
 
-app.use("/.api/functions/server", router);
+app.use("/api/server", router);
 
 module.exports.handler = serverless(app);

@@ -302,7 +302,7 @@
         messageEl.classList.add("text-gray-400");
 
         try {
-          const res = await fetch("/.netlify/functions/server", {
+          const res = await fetch("/api/server", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),

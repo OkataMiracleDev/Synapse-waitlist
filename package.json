@@ -1,14 +1,13 @@
 {
-  "name": "synpase-waitlist",
+  "name": "synapse-waitlist",
   "version": "1.0.0",
-  "description": "this is synapse waitlist backend",
+  "description": "Synapse waitlist backend + static site",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
-  "main": "server.js",
+  "main": "api/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node api/server.js",
+    "dev": "vercel dev"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
