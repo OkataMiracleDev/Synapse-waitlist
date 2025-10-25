@@ -1,0 +1,10 @@
+[build]
+  command = "npm install"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/waitlist"
+  to = "/.netlify/functions/server"
+  status = 301

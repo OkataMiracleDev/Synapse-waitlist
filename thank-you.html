@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synapse Academy | Thank You!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    }
+
+    /* Keyframes for the circular rocket animation */
+    @keyframes rocketCircularMotion {
+      0% { transform: rotate(0deg) translateY(-30px) rotate(45deg); }
+      100% { transform: rotate(360deg) translateY(-30px) rotate(45deg); }
+    }
+    
+    .rocket-container {
+      position: relative;
+      width: 150px; /* Size of the circular path */
+      height: 150px;
+    }
+
+    .rocket-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center center;
+      animation: rocketCircularMotion 2s linear infinite;
+    }
+
+    /* Hide the dots on smaller screens if they look odd, optional */
+    @media (max-width: 640px) {
+      .dot {
+        width: 6px;
+        height: 6px;
+      }
+      .rocket-container {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body class="h-full bg-gray-800 text-white font-sans flex items-center justify-center min-h-full">
+
+  <main id="loading-state" class="text-center transition-opacity duration-500">
+    <div class="flex items-center justify-center pb-20 flex-col">
+      <div class="rocket-container relative -translate-x-6">
+        <i class="fas fa-rocket text-4xl text-yellow-400 rocket-icon"></i>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-bold mt-10">Launching you into the future...</h1>
+    </div>
+  </main>
+
+  <main id="success-state" class="hidden text-center max-w-lg md:mx-auto mx-4 px-4 py-8 rounded-lg shadow-2xl transition-opacity duration-500 bg-gray-900">
+    <i class="fas fa-check-circle text-6xl text-yellow-400 mb-2 animate-bounce"></i>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">You're on the waitlist!</h1>
+    <p class="text-base md:text-xl mb-6">
+      Thank you for joining Synapse Academy. We'll notify you as soon as we're ready to launch. In the meantime, join our community!
+    </p>
+    <a target="_blank" href="https://x.com/SynapseOnChain" class="bg-black border-2 border-white hover:bg-white hover:text-purple-700 text-white font-bold flex flex-row justify-center items-center z-50 mx-4 md:mx-0 py-3 px-4 rounded-lg transition">
+      <i class="fa-brands fa-x-twitter text-gray-500 text-xl mr-2"></i>
+      <p class="text-sm md:text-md text-bold">Follow SynapseOnChain on X</p>
+    </a>
+  </main>
+
+  <script>
+    // This script simulates a redirect and shows the success state after a delay
+    document.addEventListener("DOMContentLoaded", () => {
+      const loadingState = document.getElementById("loading-state");
+      const successState = document.getElementById("success-state");
+
+      // Hide loading state and show success state after a short delay
+      setTimeout(() => {
+        loadingState.classList.add("hidden");
+        successState.classList.remove("hidden");
+      }, 2000); // Adjust this delay as needed
+    });
+  </script>
+
+</body>
+</html>

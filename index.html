@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Synapse Academy |Join The Waitlist, Learn Crypto, Earn $SYN Tokens</title>
+  <meta name="title" content="Synapse Academy | Learn Crypto, Earn $SYN Tokens" />
+  <meta name="description" content="Join Synapse Academy to master blockchain, earn rewards in $SYN tokens, and connect with a global community of learners." />
+  <meta name="keywords" content="crypto academy, blockchain courses, earn crypto, learn blockchain, $SYN token, crypto learning Nigeria, DeFi education, Web3 academy" />
+  <meta name="author" content="Synapse Academy" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://synapseonchain.xyz/" />
+
+  <!-- Favicon & Theme -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="theme-color" content="#6e48aa" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://synapseonchain.xyz/" />
+  <meta property="og:title" content="Synapse Academy | Learn Blockchain & Earn $SYN" />
+  <meta property="og:description" content="Learn crypto, earn rewards, and join a vibrant blockchain community at Synapse Academy." />
+  <meta property="og:image" content="https://synapseonchain.xyz/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://synapseonchain.xyz/" />
+  <meta name="twitter:title" content="Synapse Academy | Learn Blockchain & Earn $SYN" />
+  <meta name="twitter:description" content="Unlock crypto knowledge, earn rewards, and join the Synapse Academy waitlist today." />
+  <meta name="twitter:image" content="https://synapseonchain.xyz/og-image.png" />
+
+  <!-- Schema Markup (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Synapse Academy",
+    "url": "https://synapseonchain.xyz/",
+    "logo": "https://synapseonchain.xyz/logo.png",
+    "description": "Synapse Academy helps learners master blockchain and crypto while earning rewards in $SYN tokens.",
+    "sameAs": [
+      "https://x.com/SynapseOnChain",
+      "https://t.me/synapseacademy"
+    ]
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    }
+    .motion-text span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: textPop 0.5s ease forwards;
+    }
+    .motion-text span:nth-child(1) { animation-delay: 0.1s; }
+    .motion-text span:nth-child(2) { animation-delay: 0.2s; }
+    .motion-text span:nth-child(3) { animation-delay: 0.3s; }
+    .motion-text span:nth-child(4) { animation-delay: 0.4s; }
+    .motion-text span:nth-child(5) { animation-delay: 0.5s; }
+    @keyframes textPop {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    .input-focus:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+
+    /* 🔥 Scroll Animation Hidden States */
+    [data-animate-up-on-scroll],
+    [data-animate-down-on-scroll],
+    [data-animate-left-on-scroll],
+    [data-animate-right-on-scroll],
+    [data-animate-wiggle-on-scroll] {
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    [data-animate-up-on-scroll]    { transform: translateY(20px); }
+    [data-animate-down-on-scroll]  { transform: translateY(-20px); }
+    [data-animate-left-on-scroll]  { transform: translateX(-30px); }
+    [data-animate-right-on-scroll] { transform: translateX(30px); }
+    [data-animate-wiggle-on-scroll] { transform: scale(0.95); }
+
+    /* 🔥 Animation Keyframes + Utility Classes */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fade-up 0.6s ease-out forwards;
+    }
+
+    @keyframes fade-down {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-down {
+      animation: fade-down 0.6s ease-out forwards;
+    }
+
+    @keyframes fade-left {
+      from { opacity: 0; transform: translateX(-30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-left {
+      animation: fade-left 0.8s ease-out forwards;
+    }
+
+    @keyframes fade-right {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-right {
+      animation: fade-right 0.8s ease-out forwards;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    .animate-wiggle {
+      animation: wiggle 0.7s ease-in-out forwards;
+    }
+
+    /* Optional helpers */
+    .animate-once { animation-iteration-count: 1; }
+    .animate-infinite { animation-iteration-count: infinite; }
+    .animate-duration-500 { animation-duration: 0.5s; }
+    .animate-duration-1000 { animation-duration: 1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-500 { animation-delay: 0.5s; }
+  </style>
+</head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ENHN4NL97Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ENHN4NL97Y');
+</script>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Navigation -->
+  <nav class="gradient-bg shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-brain text-2xl"></i>
+        <span class="text-xl font-bold">Synapse Academy</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#features" class="hover:text-gray-200 transition">Features</a>
+        <a href="#waitlist" class="hover:text-gray-200 transition">Join Waitlist</a>
+      </div>
+      <div class="md:hidden">
+        <button class="mobile-menu-button">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden z-50 md:hidden w-62 absolute top-18 right-2 bg-white rounded-xl px-2 py-4 shadow-2xl">
+      <div class="flex flex-col space-y-3 p-4">
+        <a href="#features" class="text-black font-bold hover:text-gray-200 transition">Features</a>
+        <a href="#waitlist" class="text-black font-bold hover:text-gray-200 transition">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    // Mobile menu toggle
+    const btn = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg py-16 md:py-24">
+    <div data-animate-up-on-scroll class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Learn Crypto, Earn <span class="text-yellow-300">$SYN</span>
+        </h1>
+        <p class="motion-text text-2xl md:text-3xl font-semibold mb-6">
+          <span>Master</span>
+          <span>Blockchain.</span>
+          <span>Earn</span>
+          <span>Rewards.</span>
+        </p>
+        <p data-animate-left-on-scroll class="text-lg md:text-xl mb-8">
+          Join the waitlist for Synapse Academy and unlock a new way to learn blockchain while earning tokens.
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+          <a href="#waitlist" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition">
+            Join Waitlist
+          </a>
+          <a target="_blank" href="https://x.com/SynapseOnChain" class="bg-black border-2 border-white hover:bg-white hover:text-purple-700 text-white font-bold flex flex-row justify-center items-center z-50 py-3 px-6 rounded-lg transition">
+            <i class="fa-brands fa-x-twitter text-gray-500 text-xl mr-2"></i>
+            <p>Follow SynapseOnChain</p>
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative w-64 md:w-80">
+          <div class="absolute -top-6 -left-6 w-64 h-64 md:w-80 md:h-80 bg-purple-800 rounded-full opacity-30"></div>
+          <div class="absolute -bottom-6 -right-6 w-64 h-64 md:w-80 md:h-80 bg-purple-600 rounded-full opacity-30"></div>
+          <div class="relative bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6 shadow-2xl flex flex-col justify-center items-center">
+            <div class="text-center mb-4">
+              <div class="text-xl font-bold text-white">Token Launch</div>
+            </div>
+            <div id="timeline" class="text-2xl font-bold text-yellow-300 mb-4 flex justify-center space-x-2">
+              <div class="text-gray-300">Coming Soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 data-animate-up-on-scroll class="text-3xl font-bold text-center mb-12">Why Join Synapse Academy?</h2>
+      <div data-animate-up-on-scroll class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div data-animate-left-on-scroll class="feature-card rounded-xl p-6 text-center">
+          <i class="fas fa-book text-4xl text-yellow-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Learn Blockchain</h3>
+          <p class="text-gray-400">Master crypto fundamentals with bite-sized, expert-led courses.</p>
+        </div>
+        <div data-animate-up-on-scroll class="feature-card rounded-xl p-6 text-center">
+          <i class="fas fa-coins text-4xl text-yellow-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Earn $SYN</h3>
+          <p class="text-gray-400">Get rewarded with tokens for completing courses and engaging with the community.</p>
+        </div>
+        <div data-animate-right-on-scroll class="feature-card rounded-xl p-6 text-center">
+          <i class="fas fa-users-rays text-4xl text-yellow-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Join the Community</h3>
+          <p class="text-gray-400">Connect with learners, share insights, and grow together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist Section -->
+  <section data-animate-up-on-scroll id="waitlist" class="py-16 bg-gray-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 data-animate-left-on-scroll class="text-3xl font-bold mb-6">Join the Waitlist</h2>
+      <p data-animate-up-on-scroll class="text-lg mb-8 max-w-2xl mx-auto">
+        Be the first to experience Synapse Academy. Sign up now to secure your spot and start learning and earning.
+      </p>
+      <form data-animate-right-on-scroll id="waitlist-form" class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          id="email"
+          class="input-focus flex-grow bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none"
+          required
+        >
+        <button
+          type="submit"
+          class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition"
+        >
+          Sign Up
+        </button>
+      </form>
+      <p id="form-message" class="mt-4 text-sm text-gray-400"></p>
+    </div>
+  </section>
+
+    <script>
+      document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const messageEl = document.getElementById("form-message");
+        messageEl.textContent = "Submitting...";
+        messageEl.classList.remove("text-red-400", "text-green-400");
+        messageEl.classList.add("text-gray-400");
+
+        try {
+          const res = await fetch("/.netlify/functions/server", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+
+          if (!res.ok) {
+            let data = {};
+            const contentType = res.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              data = await res.json();
+            }
+            messageEl.textContent = data.error || "Subscription failed.";
+            messageEl.classList.remove("text-gray-400");
+            messageEl.classList.add("text-red-400");
+            return;
+          }
+
+          // 🚀 Redirect to the success page instead of showing the message
+          window.location.href = "thank-you.html";
+
+        } catch (err) {
+          console.error("Fetch error:", err);
+          messageEl.textContent = "Network error, please try again later.";
+          messageEl.classList.remove("text-gray-400");
+          messageEl.classList.add("text-red-400");
+        }
+      });
+    </script>
+    
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-2 mb-4 md:mb-0">
+          <i class="fas fa-brain text-2xl text-purple-400"></i>
+          <span class="text-xl font-bold">Synapse Academy</span>
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://x.com/SynapseOnChain" class="social-icon text-gray-400 hover:text-white">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+          <a href="#" class="social-icon text-gray-400 hover:text-white">
+            <i class="fab fa-telegram text-xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400">
+        &copy; 2025 Synapse Academy. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedElements = document.querySelectorAll(
+        "[data-animate-up-on-scroll], [data-animate-down-on-scroll], [data-animate-left-on-scroll], [data-animate-right-on-scroll], [data-animate-wiggle-on-scroll]"
+      );
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.target.hasAttribute("data-animate-up-on-scroll")) {
+              entry.target.classList.add("animate-fade-up");
+            }
+            if (entry.target.hasAttribute("data-animate-down-on-scroll")) {
+              entry.target.classList.add("animate-fade-down");
+            }
+            if (entry.target.hasAttribute("data-animate-left-on-scroll")) {
+              entry.target.classList.add("animate-fade-left");
+            }
+            if (entry.target.hasAttribute("data-animate-right-on-scroll")) {
+              entry.target.classList.add("animate-fade-right");
+            }
+            if (entry.target.hasAttribute("data-animate-wiggle-on-scroll")) {
+              entry.target.classList.add("animate-wiggle");
+            }
+            obs.unobserve(entry.target); // run once
+          }
+        });
+      }, { threshold: 0.2 });
+
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
