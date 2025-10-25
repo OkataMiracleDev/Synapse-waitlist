@@ -9,7 +9,7 @@ const router = express.Router();
 
 // ✅ Fixed origins (no trailing slash)
 const allowedOrigins = [
-  "https://synapse-waitlist-sandy.vercel.app/",
+  "https://synapse-waitlist-sandy.vercel.app",
   "https://synapseonchain.xyz"
 ];
 
