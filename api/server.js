@@ -20,7 +20,6 @@ app.use(
       // allow curl/postman/no-origin requests
       if (!origin) return callback(null, true);
 
-      // strip trailing slash just in case
       const cleanOrigin = origin.replace(/\/$/, "");
 
       if (!allowedOrigins.includes(cleanOrigin)) {
@@ -35,11 +34,13 @@ app.use(
 
 app.use(express.json());
 
+// 🧩 Initialize Supabase client
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON_KEY
 );
 
+// ✅ Route
 router.post("/", async (req, res) => {
   const { email } = req.body;
   if (!email) {
@@ -56,4 +57,6 @@ router.post("/", async (req, res) => {
 
 app.use("/api/server", router);
 
+// ✅ Export for Vercel
+module.exports = app;
 module.exports.handler = serverless(app);
